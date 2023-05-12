@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="navbar-page">
+        <div id="nav">
+            <div onclick="homepage()" id="nav-item">
+                <div>
+                    <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png"
+                        alt="">
+                </div>
+                <div>
+                    <p style="color: white;">explore</p>
+                    <p style="color: rgb(247, 226, 2);">plus</p>
+                    <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png"
+                        alt="">
+                </div>
+            </div>
+            <div id="nav-item1">
+                <input type="text" placeholder="Search for products, brands and more">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div id="nav-item2">
+                <a href="/Register.html"><input class="login" type="text" placeholder="Login"></a>
+            </div>
+            <div onclick="openpage()" id="nav-item3">
+                <p>Become a Seller</p>
+            </div>
+            <div id="nav-item4">
+                <p>More</p>
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <a style="text-decoration: none;" href="/Cart.html">
+                <div id="nav-item5">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p>Cart</p>
+                </div>
+            </a>
+            <div id="nav-item6">
+
+            </div>
+        </div>
+        <div id="singleproductpage">
+            <!-- <div id="singleprodcuct-page-one">
+                <div id="singleprodcuct-page-one-box">
+                    <div id="singleprodcuct-page-one-box-item">
+                        <div class="singleprodcuct-page-one-box-f-item">
+
+                        </div>
+                        <div class="singleprodcuct-page-one-box-f-item">
+
+                        </div>
+                        <div class="singleprodcuct-page-one-box-f-item">
+
+                        </div>
+                        <div class="singleprodcuct-page-one-box-f-item">
+
+                        </div>
+
+                    </div>
+                    <div id="singleprodcuct-page-one-box-item1">
+
+                    </div>
+                </div>
+                <div id="singleprodcuct-page-one-box1">
+                    <button class="btn">Add To Cart</button>
+                    <button class="btn">Buy Now</button>
+
+                </div>
+
+            </div>
+            <div id="singleprodcuct-page-two">
+
+            </div> -->
+
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+
+            var singleproductData = JSON.parse(localStorage.getItem("f_current_product"));
+            console.log(singleproductData, "singleproductData");
+
+            var singleproduct = document.getElementById("singleproductpage");
+            console.log(singleproduct, "singleproduct");
+
+
+
+            singlepage = `<div id="singleprodcuct-page-one">
+                <div id="singleprodcuct-page-one-box">
+                    <div id="singleprodcuct-page-one-box-item">
+                        <div class="singleprodcuct-page-one-box-f-item">
+                            <img src="${singleproductData.seller_product_image}" />
+                        </div>
+                        <div class="singleprodcuct-page-one-box-f-item">
+                            <img src="${singleproductData.seller_product_image}" />
+                        </div>
+                        <div class="singleprodcuct-page-one-box-f-item">
+                            <img src="${singleproductData.seller_product_image}" />
+                        </div>
+                        <div class="singleprodcuct-page-one-box-f-item">
+                            <img src="${singleproductData.seller_product_image}" />
+                        </div>
+                    </div>
+                    <div id="singleprodcuct-page-one-box-item1">
+                        <img src="${singleproductData.seller_product_image}" />
+                    </div>
+                </div>
+                <div id="singleprodcuct-page-one-box1">
+                    <button class="btn" onclick = 'AddToCart(${JSON.stringify(singleproductData)})'>Add To Cart</button>
+                    <button class="btn">Buy Now</button>
+                </div>
+            </div>
+            <div id="singleprodcuct-page-two">
+
+            </div>`
+
+            singleproduct.innerHTML = singlepage;
+            console.log(singlepage, "singlepage");
+
+
+            
+
+            var replace_user = document.getElementById("nav-item2");
+            console.log(replace_user, "replace_user");
+
+            var display_logout_button = document.getElementById("nav-item6");
+            console.log(display_logout_button, "display_logout_button")
+
+            var flipkart_user = JSON.parse(localStorage.getItem("current_user"));
+            console.log(flipkart_user, "flipkart_user");
+
+            if (flipkart_user) {
+                replace_user.innerHTML = `<input class="login" type="submit"
+                value=${flipkart_user.f_name}>`
+
+                display_logout_button.innerHTML = `<input onclick="logout()" class="login" type="submit"
+                value=Logout>`
+            }
+
+
+            function logout() {
+                localStorage.removeItem("current_user");
+                alert("logout Successfully")
+                location.reload();
+            }
+
+            function openpage() {
+                window.location.href = "./Seller.html"
+            }
+
+        }
+
+        
+        function homepage() {
+                window.location.href = "./Index.html";
+            }
+
+        function AddToCart(product) {
+
+            var DataFromLS = JSON.parse(localStorage.getItem("flipkart_user"));
+            console.log(DataFromLS, "DataFromLS");
+
+            var currentuser = JSON.parse(localStorage.getItem("current_user"));
+            console.log(currentuser, "currentuser");
+
+
+            for (var i = 0; i < DataFromLS.length; i++) {
+                if (DataFromLS[i].f_email === currentuser.f_email) {
+                    if (DataFromLS[i].cartproduct == undefined) {
+                        DataFromLS[i].cartproduct = [product]
+                    }
+                    else {
+                        DataFromLS[i].cartproduct.push(product)
+
+                    }
+                    alert("product added successfully");
+                }
+            }
+            localStorage.setItem("flipkart_user", JSON.stringify(DataFromLS));
+        }
+
+
+    </script>
+</body>
+
+</html>

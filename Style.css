@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+#Register-fullpage{
+    border: 1px solid black;
+    width: 100vw;
+    height: 100vh;
+    background-color: #022954;
+}
+
+#register-page{
+    /* border: 1px solid black;  */
+    width: 50%;
+    margin: auto;
+    height: 500px;
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+#register-left-side{
+    /* border: 1px solid black; */
+    width: 40%;
+    height: 500px;
+    background-color: rgb(40,116,240);
+}
+
+#register-left-side-one{
+    /* border: 1px solid black; */
+    width: 80%;
+    margin: auto;
+    height: 160px;
+    position: relative;
+    top: 10%;
+    
+}
+
+#register-left-side-one h1{
+    color: white;
+}
+
+#register-left-side-one p{
+    position: relative;
+    top: 13%;
+    margin-top: 5px;
+    color: white;
+    font-size: 18px;
+}
+
+#register-left-side-two{
+    /* border: 1px solid black; */
+    width: 80%;
+    margin: auto;
+    height: 140px;
+    position: relative;
+    top: 25%;
+}
+
+#register-left-side-two img{
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+}
+
+#register-right-side{
+    /* border: 1px solid white; */
+    width: 60%;
+    height: 500px;
+    background-color: white;
+}
+
+form{
+    /* border: 1px solid rgb(224,224,224); */
+    width: 70%;
+    margin: auto;
+    height: 300px;
+    position: relative;
+    top: 10%;
+}
+
+form input{
+    border: 1px solid  rgb(224,224,224);
+    width: 100%;
+    margin: auto;
+    margin-top: 15px;
+    height: 40px;
+}
+
+.btn{
+    border: none;
+    outline: none;
+    font-size: 16px;
+    /* font-weight: 800; */
+    color: white;
+}
+
+#register-right-side p{
+    /* border: 1px solid black; */
+    width: 70%;
+    margin: auto;
+    position: relative;
+    top: 30%;
+    text-align: center;
+    font-size: 12px;
+    color: rgb(40,144,241);
+    font-weight: 800;
+}

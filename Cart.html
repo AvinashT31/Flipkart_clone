@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Cart.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="cartfullpage">
+    <div id="navbar-page">
+      <div id="nav">
+        <div onclick="homepage()" id="nav-item">
+          <div>
+            <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png"
+              alt="">
+          </div>
+          <div>
+            <p style="color: white;">explore</p>
+            <p style="color: rgb(247, 226, 2);">plus</p>
+            <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png" alt="">
+          </div>
+        </div>
+        <div id="nav-item1">
+          <input type="text" placeholder="Search for products, brands and more">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div id="nav-item2">
+          <a href="/Register.html"><input class="login" type="text" placeholder="Login"></a>
+        </div>
+        <div onclick="openpage()" id="nav-item3">
+          <p>Become a Seller</p>
+        </div>
+        <div id="nav-item4">
+          <p>More</p>
+          <i class="fa-solid fa-angle-down"></i>
+        </div>
+        <a style="text-decoration: none;" href="/Cart.html">
+          <div id="nav-item5">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Cart</p>
+          </div>
+        </a>
+        <div id="nav-item6">
+
+        </div>
+      </div>
+    </div>
+    <div id="cartpage">
+      <!-- <div id="cartpage-one">
+        <div id="cartpage-section-one">
+          <div class="cartpage-section-one-item">
+            <p>Flipkart</p>
+          </div>
+          <div style="margin-top: 2%;" class="cartpage-section-one-items">
+            <p>From Saved Address</p>
+            <button>Enter Your Pincode</button>
+          </div>
+          <div class="cartpage-section-one-item1">
+            <div class="cartpage-section-one-f-item">
+              <img src="" alt="">
+            </div>
+            <div class="cartpage-section-one-f-item1">
+              <h1>Kurti</h1>
+              <h3>233</h3>
+            </div>
+
+          </div>
+          <div class="cartpage-section-one-item2">
+            <button>Place Order</button>
+          </div>
+        </div>
+        <div id="cartpage-section-two">
+          <div id="cartpage-section-two-one">
+            <div id="cartpage-section-two-one-item">
+              <p>PRICE DETAILS</p>
+            </div>
+            <div id="cartpage-section-two-one-item1">
+              <p style="right: 10%;">Price(1 item)</p>
+              <p style="left: 5%;">₹1,499</p>
+            </div>
+            <div id="cartpage-section-two-one-item2">
+              <p style="right: 12%;">Discount</p>
+              <p style="left: 8%;">₹-1,100</p>
+            </div>
+            <div id="cartpage-section-two-one-item3">
+              <p style="right: 10%;">Delivery Charges</p>
+              <p style="left: 3%;">FREE</p>
+            </div>
+            <div id="cartpage-section-two-one-item4">
+              <p style="right: 10%;">TOTAL AMOUNT</p>
+              <p style="left: 3%;">₹399</p>
+            </div>
+            <div id="cartpage-section-two-one-item5">
+              <p>You will save ₹1,100 on this order</p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+
+  <script>
+
+    window.onload = function () {
+
+      // alert("workinh");
+
+      var DataFromLS = JSON.parse(localStorage.getItem("flipkart_user"));
+      console.log(DataFromLS, "DataFromLS");
+
+      var current_user = JSON.parse(localStorage.getItem("current_user"));
+      console.log(current_user, "current_user");
+
+      var cartlist = "";
+
+      for (var i = 0; i < DataFromLS.length; i++) {
+        if (DataFromLS[i].f_email === current_user.f_email) {
+          cartlist = DataFromLS[i].cartproduct
+        }
+      } console.log(cartlist, "cartlist");
+
+
+
+
+      var cart = "";
+
+      var cartFromHTML = document.getElementById("cartpage");
+      console.log(cartFromHTML, "cartFromHTML");
+
+      for (var i = 0; i < cartlist.length; i++) {
+         cart = `<div id="cartpage-one">
+        <div id="cartpage-section-one">
+          <div class="cartpage-section-one-item">
+            <p>Flipkart</p>
+          </div>
+          <div style="margin-top: 2%;" class="cartpage-section-one-items">
+            <p>From Saved Address</p>
+            <button>Enter Your Pincode</button>
+          </div>
+          <div class="cartpage-section-one-item1">
+            <div class="cartpage-section-one-f-item">
+              <img src=${cartlist[i].seller_product_image} alt="">
+            </div>
+            <div class="cartpage-section-one-f-item1">
+              <h1>${cartlist[i].seller_product_name}</h1>
+              <h3>₹${cartlist[i].seller_product_price}</h3>
+            </div>
+
+          </div>
+          <div class="cartpage-section-one-item2">
+            <button>Place Order</button>
+          </div>
+        </div>
+        <div id="cartpage-section-two">
+          <div id="cartpage-section-two-one">
+            <div id="cartpage-section-two-one-item">
+              <p>PRICE DETAILS</p>
+            </div>
+            <div id="cartpage-section-two-one-item1">
+              <p style="right: 10%;">Price(1 item)</p>
+              <p style="left: 5%;">₹1,499</p>
+            </div>
+            <div id="cartpage-section-two-one-item2">
+              <p style="right: 12%;">Discount</p>
+              <p style="left: 8%;">₹-1,100</p>
+            </div>
+            <div id="cartpage-section-two-one-item3">
+              <p style="right: 10%;">Delivery Charges</p>
+              <p style="left: 3%;">FREE</p>
+            </div>
+            <div id="cartpage-section-two-one-item4">
+              <p style="right: 10%;">TOTAL AMOUNT</p>
+              <p style="left: 3%;">₹399</p>
+            </div>
+            <div id="cartpage-section-two-one-item5">
+              <p>You will save ₹1,100 on this order</p>
+            </div>
+          </div>
+        </div>
+      </div>`
+      }
+
+      cartFromHTML.innerHTML = cart;
+      console.log(cart, "cart")
+
+
+      var replace_user = document.getElementById("nav-item2");
+      console.log(replace_user, "replace_user");
+
+      var display_logout_button = document.getElementById("nav-item6");
+      console.log(display_logout_button, "display_logout_button")
+
+      var flipkart_user = JSON.parse(localStorage.getItem("current_user"));
+      console.log(flipkart_user, "flipkart_user");
+
+      if (flipkart_user) {
+        replace_user.innerHTML = `<input class="login" type="submit"
+                value=${flipkart_user.f_name}>`
+
+        display_logout_button.innerHTML = `<input onclick="logout()" class="login" type="submit"
+                value=Logout>`
+      }
+
+
+
+      function logout() {
+        localStorage.removeItem("current_user");
+        alert("logout Successfully")
+        location.reload();
+      }
+
+
+    }
+    function removeproduct() {
+
+    }
+
+    function openpage(){
+        window.location.href = "./Seller.html"
+      }
+
+      function homepage(){
+        window.location.href = "./Index.html"
+      }
+  </script>
+</body>
+
+</html>
