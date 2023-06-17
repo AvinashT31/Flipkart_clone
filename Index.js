@@ -25,8 +25,5 @@ function opensinglepage(prop){
     // console.log(x, "hey");
 
     window.location.href = "/Singlepage.html";
-    localStorage.setItem("f_current_product", singleproduct);
-
-
-    
+    localStorage.setItem("f_current_product", singleproduct);    
 }
